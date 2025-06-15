@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -18,8 +19,473 @@
     <link rel="stylesheet" href="css/nice-select.css">
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> <link rel="stylesheet" href="css/style.css">
-    </head>
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> 
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- Mejoras Estéticas Generales y Animaciones --- */
+
+        /* Transiciones para suavizar cambios de estado en botones y links */
+        a, button, input[type="submit"] {
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto de hover para iconos de redes sociales */
+        .social-icon-hover a img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icon-hover a:hover img {
+            transform: scale(1.1); /* Ligeramente más grande al pasar el mouse */
+        }
+
+        /* --- Sección Sobre Nosotros --- */
+        .about_us_area {
+            padding: 100px 0;
+            background-color: #f0f2f5; /* Fondo claro para contraste */
+        }
+
+        .about_thumb img {
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+
+        .about_info {
+            padding-left: 30px;
+        }
+
+        @media (max-width: 991px) {
+            .about_info {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+        }
+
+        .about_info p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* --- Sección Precios (Reforzando estilos anteriores) --- */
+        .priscing_area {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            background-color: #f8f9fa; /* Un fondo suave para la sección */
+        }
+
+        .section_title h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        .section_title p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .single_prising {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+        }
+
+        .single_prising.card-hover-effect:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .prising_header h3 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0056b3; /* Color primario de tu plantilla, ajusta si es necesario */
+        }
+
+        .prising_header span {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .prising_header span sup {
+            font-size: 20px;
+            top: -1em;
+        }
+
+        .pricing_body ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .pricing_body ul li {
+            font-size: 16px;
+            color: #555;
+            line-height: 2.0;
+            padding: 5px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .pricing_body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing_btn .boxed-btn3 {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #007bff; /* Color del botón principal, ajusta si es necesario */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border: none; /* Asegúrate de que no haya bordes dobles si el estilo original ya lo tiene */
+        }
+
+        .pricing_btn .boxed-btn3:hover {
+            background-color: #0056b3; /* Tono más oscuro al pasar el mouse */
+        }
+
+        .single_prising.featured-card {
+            border: 2px solid #007bff; /* Un borde distintivo */
+            transform: scale(1.02); /* Ligeramente más grande */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .single_prising.featured-card .prising_header h3,
+        .single_prising.featured-card .prising_header span {
+            color: #007bff;
+        }
+
+        /* Estilos para el modal */
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-header .close {
+            color: white;
+            opacity: 0.8;
+            font-size: 1.8rem;
+            line-height: 1;
+            text-shadow: none;
+        }
+
+        .modal-body {
+            padding: 30px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .modal-body strong {
+            color: #0056b3;
+        }
+
+        .modal-footer {
+            border-top: none;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .modal-footer .boxed-btn3 {
+            background-color: #6c757d; /* Color gris para el botón de cerrar */
+        }
+
+        .modal-footer .boxed-btn3:hover {
+            background-color: #5a6268;
+        }
+
+        /* --- Sección Galería --- */
+        .gallery_area {
+            padding: 100px 0;
+            background-color: #f0f2f5;
+        }
+
+        .single_gallery_item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px; /* Espacio entre items */
+        }
+
+        .single_gallery_item img {
+            width: 100%;
+            height: 250px; /* Altura fija para uniformidad, puedes ajustar */
+            object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsión */
+            display: block;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .single_gallery_item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay y botón de reproducción para videos */
+        .single_gallery_item .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .single_gallery_item:hover .play-button {
+            opacity: 1;
+        }
+
+        /* --- Sección Preguntas Frecuentes (FAQ) --- */
+        .faq_area {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .faq_area .card {
+            border: none;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq_area .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+            padding: 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .faq_area .card-header h5 {
+            margin-bottom: 0;
+        }
+
+        .faq_area .card-header .btn-link {
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            padding: 18px 25px;
+            text-decoration: none;
+            position: relative;
+            background-color: transparent;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .faq_area .card-header .btn-link:hover {
+            color: #007bff;
+        }
+
+        .faq_area .card-header .btn-link::after {
+            font-family: 'FontAwesome';
+            content: "\f067"; /* Icono de más */
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq_area .card-header .btn-link.collapsed::after {
+            content: "\f067"; /* Icono de más */
+        }
+
+        .faq_area .card-header .btn-link:not(.collapsed)::after {
+            content: "\f068"; /* Icono de menos */
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq_area .card-body {
+            padding: 20px 25px;
+            font-size: 16px;
+            color: #666;
+            background-color: #fff;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        /* --- Sección Contacto --- */
+        .contact_area {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+
+        .contact_form {
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact_form input,
+        .contact_form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .contact_form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact_form input:focus,
+        .contact_form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+        }
+
+        .contact_form button.boxed-btn3 {
+            width: auto;
+            padding: 15px 40px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .map_area {
+            margin-top: 0;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            height: 450px; /* Asegura que el mapa tenga altura */
+        }
+
+        @media (max-width: 991px) {
+            .map_area {
+                margin-top: 40px;
+            }
+        }
+
+        .map_area iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        .contact_info_box {
+            background-color: #007bff;
+            color: white;
+            padding: 25px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-top: -5px; /* Para que quede pegado al mapa */
+        }
+
+        .contact_info_box p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact_info_box p i {
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .contact_info_box p a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact_info_box p a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Ajustes para el contador --- */
+        #cuenta {
+            font-size: 3.5rem; /* Ajusta el tamaño de la fuente para que sea más legible */
+            font-weight: bold;
+            color: #fff; /* Asegúrate de que sea visible sobre el fondo del banner */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mejor contraste */
+            letter-spacing: 2px;
+        }
+
+        .offter_text h1, .offter_text h3, .offter_text p {
+            color: #fff !important; /* Asegura que el texto dentro del banner sea blanco */
+        }
+
+        /* --- Responsive fixes --- */
+        @media (max-width: 767px) {
+            .section_title h3 {
+                font-size: 36px;
+            }
+            .priscing_area .col-lg-4,
+            .gallery_area .col-lg-4,
+            .features_area .col-lg-3 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .single_prising, .single_gallery_item, .faq_area .card, .contact_form {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .slider_text h3 {
+                font-size: 40px;
+            }
+            .slider_text span {
+                font-size: 20px;
+            }
+            #cuenta {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
 
 <body>
     <header>
@@ -209,7 +675,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="transferModalLabel">Detalles para Transferencia Bancaria</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -275,7 +741,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="600">
                     <div class="single_gallery_item">
-                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=yourvideoid" title="Video de Campeonato">
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=tu_id_de_video_aqui" title="Video de Campeonato">
                              <img src="img/gallery/video_thumb.jpg" alt="Video Thumbnail" loading="lazy">
                              <div class="play-button">
                                 <i class="fa fa-play"></i>
@@ -319,7 +785,7 @@
                                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         ¿Qué tipo de entrenamiento ofrecen?
                                     </button>
-                                </h5>
+                                <h5>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
                                 <div class="card-body">
@@ -373,7 +839,6 @@
             </div>
         </div>
     </div>
-
     <div class="features_area">
         <div class="container">
             <div class="row">
@@ -388,7 +853,7 @@
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
                     <div class="single_feature text-center mb-73">
                         <div class="icon social-icon-hover">
-                            <a href="https://www.youtube.com/@ArmwrestlingMazatlan" target="_blank">
+                            <a href="https://www.youtube.com/@tu_canal_youtube" target="_blank">
                                 <img src="img/youtube.png" alt="YouTube" style="height: 80px;" loading="lazy">
                             </a>
                         </div>
@@ -474,7 +939,7 @@
                 </div>
                 <div class="col-lg-5 col-md-12">
                     <div class="map_area" data-aos="fade-left" data-aos-duration="1000">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3663.023805322881!2d-106.41738742468383!3d23.238479901452144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869103848b819f71%3A0x633d32483162744e!2sMazatlan%2C%20Sinaloa!5e0!3m2!1sen!2smx!4v1701995874288!5m2!1sen!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.838382755531!2d-106.4172851849929!3d23.21735518485292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8634863c4826b149%3A0xf693e50b571169a8!2sMazatlan%2C%20Sinaloa%2C%20Mexico!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         <div class="contact_info_box">
                             <p><i class="fa fa-map-marker"></i> [Dirección Aproximada o Punto de Reunión en Mazatlán]</p>
                             <p><i class="fa fa-phone"></i> 669262353</p>
@@ -540,7 +1005,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> ARMWRESTLING MAZATLÁN. Todos los derechos reservados.
+                            Copyright ©<script>document.write(new Date().getFullYear());</script> ARMWRESTLING MAZATLÁN. Todos los derechos reservados.
                         </p>
                     </div>
                 </div>
@@ -565,16 +1030,119 @@
     <script src="js/jquery.slicknav.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> <script src="js/contact.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+
+    <script src="js/contact.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
 
-
     <script src="js/main.js"></script>
     <script src="js/simplyCountdown.min.js"></script>
     <script src="js/countdown.js"></script>
-    <script src="script.js"></script> </body>
+    <script src="script.js"></script> 
+
+    <script>
+        // Inicializar AOS (Animate On Scroll) cuando la página y todos los recursos estén cargados
+        $(window).on('load', function() {
+            AOS.init({
+                once: true, // Las animaciones solo se ejecutan una vez
+                duration: 1000, // Duración por defecto de las animaciones (en ms)
+                easing: 'ease-out-quad', // Tipo de curva para la animación
+            });
+        });
+
+        // Cuando el documento esté completamente cargado...
+        $(document).ready(function() {
+            // Script para abrir el modal de transferencia
+            $('.open-transfer-modal').on('click', function(e) {
+                e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                $('#transferModal').modal('show'); // Muestra el modal de Bootstrap
+            });
+
+            // Inicializar Magnific Popup para imágenes en la galería
+            $('.popup-image').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true // Habilita la navegación entre imágenes
+                },
+                zoom: {
+                    enabled: true, // Habilita efecto de zoom
+                    duration: 300 // Duración del zoom
+                }
+            });
+
+            // Inicializar Magnific Popup para videos de YouTube en la galería
+            $('.popup-youtube').magnificPopup({
+                disableOn: 700, // Deshabilita en pantallas pequeñas (<= 700px)
+                type: 'iframe', // Tipo de contenido: iframe (para YouTube)
+                mainClass: 'mfp-fade', // Clase CSS para transiciones
+                removalDelay: 160, // Retraso al cerrar el popup
+                preloader: false, // Deshabilita el preloader
+                fixedContentPos: false // Permite que el contenido se desplace con la página
+            });
+
+            // Desplazamiento suave para los enlaces de navegación ancla
+            // Excluye enlaces con '#' solamente, y enlaces de contacto, y los de los colapsables de FAQ
+            $('a[href*="#"]:not([href="#"]):not([href="#contact"]):not([data-toggle="collapse"])').on('click', function(event) {
+                // Asegura que el enlace sea a una sección dentro de la misma página
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash); // Obtiene el elemento destino por su ID
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']'); // Fallback por si usa 'name' en lugar de 'id'
+                    if (target.length) {
+                        event.preventDefault(); // Previene el salto instantáneo
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - $('header').outerHeight() + 1 // Desplaza suavemente, ajustando por la altura del header fijo
+                        }, 1000); // Duración de la animación en ms
+                    }
+                }
+            });
+
+            // Fix para que el menú móvil (slicknav) funcione correctamente y cierre al hacer clic en un enlace de ancla
+            if ($.fn.slicknav) { // Verifica si slicknav está cargado
+                $('#navigation').slicknav({
+                    prependTo: '.mobile_menu', // Dónde insertar el menú móvil
+                    closedSymbol: '+', // Símbolo para ítems cerrados
+                    openedSymbol: '-', // Símbolo para ítems abiertos
+                    allowParentLinks: true // Permite que los enlaces padre sean clicables
+                });
+            }
+
+            // Cierra el menú móvil al hacer clic en un enlace de navegación
+            $('.mobile_menu #navigation a').on('click', function() {
+                if ($('#slicknav-btn').hasClass('slicknav_open')) {
+                    $('#slicknav-btn').trigger('click'); // Simula un clic en el botón del menú para cerrarlo
+                }
+            });
+
+            // Función para el contador de cuenta regresiva del torneo (ya presente en countdown.js)
+            // Asegúrate de que `simplyCountdown.min.js` y `countdown.js` estén correctamente enlazados y configurados para tu fecha del 30 de junio.
+            simplyCountdown('#cuenta', {
+                year: 2025, // El año actual del torneo
+                month: 6,   // Junio es el mes 6
+                day: 30,    // El 30 de junio
+                hours: 10,  // Por ejemplo, 10 AM
+                minutes: 0,
+                seconds: 0,
+                enableUtc: false, // Usar la zona horaria local (Mazatlán)
+                refresh: 1000,
+                showZero: true,
+                inline: false,
+                sectionClass: 'simply-countdown-section',
+                amountClass: 'simply-countdown-amount',
+                wordClass: 'simply-countdown-word',
+                inlineClass: 'simply-countdown-inline',
+                onEnd: function() {
+                    document.getElementById('cuenta').innerHTML = '<div class="h3">¡TORNEO EN CURSO!</div>';
+                },
+                callback: function() { /* Opcional: callback al actualizar */ },
+                vcdCallback: function() { /* Opcional: callback al iniciar */ }
+            });
+        });
+    </script>
+
+</body>
 
 </html>
